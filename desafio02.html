@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="nome">
+        <button onClick="adicionar()">Adicionar</button>
+    </div>
+    <script>
+        var app = document.querySelector('#app');
+        var btn = document.createElement('button');
+        btn.innerHTML = "Aperte aqui";
+        btn.addEventListener ("click", function() {
+            var quadrado = document.createElement('div');
+            quadrado.style.width = '100px';
+            quadrado.style.height = '100px';
+            quadrado.style.backgroundColor = '#ff0000';
+            quadrado.addEventListener("mouseover", function(){
+                quadrado.style.backgroundColor = getRandomColor();
+            });
+            app.appendChild(quadrado);
+        });
+
+        app.appendChild(btn);
+
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        var nomes = ["Diego", "Gabriel", "Lucas"];
+        var lista = document.createElement('ul');
+        app.appendChild(lista);
+        function inicializarLista(){
+            for (const i of nomes) {
+                var li = document.createElement('li');
+                li.innerHTML = i
+                lista.appendChild(li);
+            }
+        }
+        inicializarLista();
+
+        function adicionar(){
+            var li = document.createElement('li');
+            var nome = document.querySelector('input');
+            li.innerHTML = nome.value;
+            nome.value = '';
+            lista.appendChild(li);
+        }
+
+    </script>
+</body>
+</html>
