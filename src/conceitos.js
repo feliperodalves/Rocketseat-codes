@@ -108,7 +108,7 @@ const usuario6 = 'Diego';
 const idade6 = 23;
 console.log(`O usuário ${usuario6} possui ${idade6} anos`);
 
-//EXERCICIO 6
+//EXERCICIO 7
 const nome7 = 'Diego';
 const idade7 = 23;
 const usuario7 = {
