@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 /* allow other applications to access the application */
 app.use(cors());
-app.use("/files", express.static(path.resolve(__dirname, "..", "resized")));
-app.use(require("./routes"));
+app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads', 'resized')));
+app.use(require('./routes'));
 
 server.listen(3333);
