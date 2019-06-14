@@ -26,7 +26,7 @@ class New extends Component {
     data.append("image", this.state.image);
     data.append("author", this.state.author);
     data.append("place", this.state.place);
-    data.append("description", this.state.image.description);
+    data.append("description", this.state.description);
     data.append("hashtags", this.state.hashtags);
 
     await api.post("posts", data);

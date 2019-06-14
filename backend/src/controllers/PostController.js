@@ -13,7 +13,7 @@ module.exports = {
 
   /** ACTION to create image file and insert data on database */
   async store(req, res) {
-    const { author, place, destination, hashtags } = req.body;
+    const { author, place, description, destination, hashtags } = req.body;
     const { filename: image } = req.file;
     const [name] = image.split(".");
     const fileName = `${name}.jpg`;
@@ -28,6 +28,7 @@ module.exports = {
     const post = await Post.create({
       author,
       place,
+      description,
       destination,
       hashtags,
       image
