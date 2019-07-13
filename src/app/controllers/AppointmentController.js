@@ -18,7 +18,7 @@ class AppointmentController {
         canceled_at: null,
       },
       order: ['date'],
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past', 'cancellable'],
       limit: 20,
       offset: (page - 1) * 20,
       include: [
@@ -88,7 +88,7 @@ class AppointmentController {
 
     const appointment = await Appointment.create({
       user_id: req.userId,
-      provider_id,
+      provider_id: provider_id,
       date,
     });
 
