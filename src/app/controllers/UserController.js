@@ -11,6 +11,9 @@ class UserController {
       password: Yup.string()
         .required()
         .min(6),
+      confirmPassword: Yup.string().when('password', (password, field) =>
+        password ? field.required().oneOf([Yup.ref('password')]) : field
+      ),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -21,6 +24,7 @@ class UserController {
     if (userExists) {
       return res.status(400).json({ error: 'User already exists' });
     }
+
     const { id, name, email } = await User.create(req.body);
     return res.json({ id, name, email });
   }
@@ -38,29 +42,30 @@ class UserController {
       confirmPassword: Yup.string().when('password', (password, field) =>
         password ? field.required().oneOf([Yup.ref('password')]) : field
       ),
+      file_id: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { email, oldPassword } = req.body;
     const user = await User.findByPk(req.userId);
 
-    if (email !== user.email) {
+    if (req.body.email && req.body.email !== user.email) {
       const userExists = await User.findOne({
-        where: { email },
+        where: { email: req.body.email },
       });
       if (userExists) {
         return res.status(400).json({ error: 'User already exists' });
       }
     }
 
+    const { oldPassword } = req.body;
     if (oldPassword && !(await user.checkPassword(oldPassword))) {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name } = await user.update(req.body);
+    const { id, name, email } = await user.update(req.body);
 
     return res.json({ id, name, email });
   }
