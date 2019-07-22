@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import background from "./assets/background.jpg";
+import TechList from "./components/TechList";
 
 class componentName extends Component {
   render() {
-    return <img width="100%" src={background} />;
+    return <TechList />;
   }
 }
 
