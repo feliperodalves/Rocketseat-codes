@@ -3,10 +3,10 @@ import "./App.css";
 
 import TechList from "./components/TechList";
 
-class componentName extends Component {
+class App extends Component {
   render() {
     return <TechList />;
   }
 }
 
-export default componentName;
+export default App;
