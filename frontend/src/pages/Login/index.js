@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import api from "../../services/api";
+import React, { useState } from 'react';
+import api from '../../services/api';
 
-import logo from "../../assets/logo.svg";
-import { LoginContainer } from "./styles";
+import logo from '../../assets/logo.svg';
+import { LoginContainer } from './styles';
 
 export default function Login({ history }) {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await api.post("/devs", { username });
+    const response = await api.post('/devs', { username });
 
     const { _id } = response.data;
 

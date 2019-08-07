@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import api from "../../services/api";
+import api from '../../services/api';
 
-import logo from "../../assets/logo.svg";
-import dislike from "../../assets/dislike.svg";
-import like from "../../assets/like.svg";
+import logo from '../../assets/logo.svg';
+import dislike from '../../assets/dislike.svg';
+import like from '../../assets/like.svg';
 
-import { MainContainer, Buttons } from "./styles";
+import { MainContainer, Buttons } from './styles';
 
 export default function Main({ match }) {
   const { id: userId } = match.params;
@@ -16,7 +16,7 @@ export default function Main({ match }) {
 
   useEffect(() => {
     async function loadUsers() {
-      const response = await api.get("/devs", {
+      const response = await api.get('/devs', {
         headers: { user: userId }
       });
       setUsers(response.data);
@@ -70,6 +70,6 @@ export default function Main({ match }) {
       ) : (
         <div className="empty">Acabou :(</div>
       )}
-    </MainContainer>
+    </>
   );
 }
