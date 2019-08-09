@@ -17,7 +17,7 @@ export default function Main({ match }) {
   useEffect(() => {
     async function loadUsers() {
       const response = await api.get('/devs', {
-        headers: { user: userId }
+        headers: { user: userId },
       });
       setUsers(response.data);
     }
@@ -27,7 +27,7 @@ export default function Main({ match }) {
 
   async function handleLike(id) {
     await api.post(`/devs/${id}/likes`, null, {
-      headers: { user: userId }
+      headers: { user: userId },
     });
 
     setUsers(users.filter(user => user._id !== id));
@@ -35,7 +35,7 @@ export default function Main({ match }) {
 
   async function handleDislike(id) {
     await api.post(`/devs/${id}/dislikes`, null, {
-      headers: { user: userId }
+      headers: { user: userId },
     });
 
     setUsers(users.filter(user => user._id !== id));
@@ -70,6 +70,6 @@ export default function Main({ match }) {
       ) : (
         <div className="empty">Acabou :(</div>
       )}
-    </>
+    </MainContainer>
   );
 }
