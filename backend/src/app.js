@@ -1,11 +1,23 @@
 import express from 'express';
 import mongo from 'mongoose';
 import cors from 'cors';
+import http from 'http';
+import socketIO from 'socket.io';
 import routes from './routes';
 
 class App {
   constructor() {
-    this.server = express();
+    this.app = express();
+    this.server = http.Server(this.app);
+    this.io = socketIO(this.server);
+
+    this.connectedUsers = {};
+
+    this.io.on('connection', socket => {
+      const { user } = socket.handshake.query;
+
+      this.connectedUsers[user] = socket.id;
+    });
 
     this.mongo();
     this.middlewares();
@@ -23,12 +35,18 @@ class App {
   }
 
   middlewares() {
-    this.server.use(cors());
-    this.server.use(express.json());
+    this.app.use((req, res, next) => {
+      req.io = this.io;
+      req.connectedUsers = this.connectedUsers;
+      return next();
+    });
+
+    this.app.use(cors());
+    this.app.use(express.json());
   }
 
   routes() {
-    this.server.use(routes);
+    this.app.use(routes);
   }
 }
 
