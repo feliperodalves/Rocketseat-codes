@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: #e9ebee;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  height: 100%;
+}
+
+.content {
+  max-width: 1012px;
+  margin: 0 auto;
+}
+
+#app {
+  height: 100%;
+}
+
+#main-header {
+  height: 40px;
+  background: #4267b2;
+  color: #fff;
+  font-size: 18px;
+  border-bottom: 1px solid #29487d;
+}
+
+#main-header .content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#main-header .content div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-header .content div div {
+  margin-right: 5px;
+}
+
+.feed {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.post {
+  background: #fff;
+  border-radius: 3px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5px auto;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.post .postProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.post .postProfile .picture {
+  height: 50px;
+  width: 50px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.post .postProfile .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.post .postProfile .info .name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.post .postProfile .info .date {
+  font-size: 14px;
+  color: #888;
+}
+
+.post .postData {
+  font-size: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.post .postComments {
+  margin-top: 15px;
+}
+
+.comment {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+
+.comment img {
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment .commentData {
+  width: 100%;
+  min-height: 50px;
+  background: #ddd;
+  border-radius: 20px;
+  padding: 15px 20px;
+}
+
+.comment .commentData p {
+  font-size: 14px;
+}
+
+.comment .commentData p strong {
+  font-size: 16px;
+}
