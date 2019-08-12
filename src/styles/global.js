@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
+import background from '../assets/images/background.svg';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -15,7 +17,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #7159c1;
+    background: #191920 url(${background}) no-repeat center top;
     -webkit-font-smoothing: antialiased !important;
   }
 
@@ -23,6 +25,12 @@ export default createGlobalStyle`
     color: #222;
     font-size: 14px;
     font-family: Roboto, sans-serif;
+  }
+
+  #root{
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
   }
 
   button{
