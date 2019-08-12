@@ -42,6 +42,33 @@ export const Owner = styled.header`
   }
 `;
 
+export const ListOptions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #555;
+  font-size: 14px;
+  font-weight: bold;
+`;
+
+export const Button = styled.button`
+  padding: 3px 10px;
+  border: 1px solid rgba(20, 20, 20, 0.1);
+  border-radius: 3px;
+  background: #eeeeee;
+  cursor: pointer;
+  color: #555;
+  font-size: 14px;
+  margin: 0 2px;
+
+  &[active] {
+    background: #7159c1;
+    color: #fff;
+    font-weight: bold;
+  }
+`;
+
 export const IssueList = styled.ul`
   padding-top: 30px;
   margin-top: 30px;

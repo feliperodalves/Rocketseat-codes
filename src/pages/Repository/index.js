@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 import Container from '../../components/Container';
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, ListOptions, Button } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -19,18 +19,21 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
+    state: 'all',
+    page: 1,
   };
 
   async componentDidMount() {
     const { match } = this.props;
+    const { state, page } = this.state;
     const repoName = decodeURIComponent(match.params.repository);
 
     const [repository, issues] = await Promise.all([
       api.get(`/repos/${repoName}`),
       api.get(`/repos/${repoName}/issues`, {
         params: {
-          state: 'open',
-          per_page: 5,
+          state,
+          page,
         },
       }),
     ]);
@@ -43,7 +46,7 @@ export default class Repository extends Component {
   }
 
   render() {
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, state, page } = this.state;
 
     if (loading) {
       return <Loading>Carregando...</Loading>;
@@ -57,6 +60,22 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
+        <ListOptions>
+          <div>
+            <Button>All</Button>
+            <Button>Open</Button>
+            <Button>Closed</Button>
+          </div>
+          <div>
+            <Button onClick={() => this.setState({ page: page - 1 })}>
+              Prev
+            </Button>
+            <span>{page}</span>
+            <Button onClick={() => this.setState({ page: page + 1 })}>
+              Next
+            </Button>
+          </div>
+        </ListOptions>
         <IssueList>
           {issues.map(issue => (
             <li key={String(issue.id)}>
