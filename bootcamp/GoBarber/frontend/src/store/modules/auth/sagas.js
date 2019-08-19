@@ -2,8 +2,9 @@ import { all, takeLatest, call, put } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '~/services/api';
-import { signInSuccess, signFailure } from './actions';
 import history from '~/services/history';
+
+import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
@@ -18,7 +19,6 @@ export function* signIn({ payload }) {
 
     if (!user.provider) {
       toast.error('Usuário não é prestador');
-
       return;
     }
 
@@ -53,6 +53,7 @@ export function* signUp({ payload }) {
 
 export function setToken({ payload }) {
   if (!payload) return;
+
   const { token } = payload.auth;
 
   if (token) {
@@ -60,8 +61,13 @@ export function setToken({ payload }) {
   }
 }
 
+export function signOut() {
+  history.push('/');
+}
+
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);

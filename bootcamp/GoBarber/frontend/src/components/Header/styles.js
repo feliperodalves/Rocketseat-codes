@@ -51,7 +51,7 @@ export const Profile = styled.div`
     }
 
     a {
-      display: flex;
+      display: block;
       margin-top: 2px;
       font-size: 12px;
       color: #999;
@@ -60,6 +60,7 @@ export const Profile = styled.div`
 
   img {
     height: 32px;
+    width: 32px;
     border-radius: 50%;
   }
 `;
