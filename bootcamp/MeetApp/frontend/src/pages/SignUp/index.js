@@ -24,8 +24,8 @@ export default function SignUp() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
 
-  function handleSubmit({ name, email, password }) {
-    dispatch(signUpRequest(name, email, password));
+  function handleSubmit({ name, email, password, confirmPassword }) {
+    dispatch(signUpRequest(name, email, password, confirmPassword));
   }
 
   return (
