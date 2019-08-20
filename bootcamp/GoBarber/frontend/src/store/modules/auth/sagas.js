@@ -43,7 +43,7 @@ export function* signUp({ payload }) {
       password,
       provider: true,
     });
-
+    toast.success('Perfil criado com sucesso, agora acesse nossa plataforma!');
     history.push('/');
   } catch (err) {
     toast.error('Falha no cadastro, verifique seus dados');
