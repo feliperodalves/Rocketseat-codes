@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
-  background: #fff;
+  background: rgba(0, 0, 0, 0.3);
   padding: 0 92px;
 `;
 
 export const Content = styled.div`
-  height: 64px;
-  max-width: 900px;
+  height: 92px;
+  max-width: 940px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -18,14 +19,8 @@ export const Content = styled.div`
     align-items: center;
 
     img {
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px solid #eee;
-    }
-
-    a {
-      font-weight: bold;
-      color: #7159c1;
+      height: 32px;
+      width: 32px;
     }
   }
 
@@ -37,17 +32,16 @@ export const Content = styled.div`
 
 export const Profile = styled.div`
   display: flex;
-  margin: 20px;
   padding-left: 20px;
-  border-left: 1px solid #eee;
+  align-items: center;
 
   div {
     text-align: right;
-    margin-right: 10px;
+    margin-right: 20px;
 
     strong {
       display: block;
-      color: #333;
+      color: #fff;
     }
 
     a {
@@ -59,8 +53,24 @@ export const Profile = styled.div`
   }
 
   img {
-    height: 32px;
-    width: 32px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
+    margin-right: 20px;
+  }
+  button {
+    padding: 0 21px;
+    height: 42px;
+    background: #d44059;
+    font-weight: bold;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: ${darken(0.05, '#D44059')};
+    }
   }
 `;

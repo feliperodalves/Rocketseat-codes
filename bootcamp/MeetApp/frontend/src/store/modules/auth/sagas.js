@@ -30,18 +30,18 @@ export function* signIn({ payload }) {
 
 export function* signUp({ payload }) {
   try {
-    const { name, email, password } = payload;
+    const { name, email, password, confirmPassword } = payload;
 
     yield call(api.post, 'users', {
       name,
       email,
       password,
+      confirmPassword,
     });
 
     toast.success('Perfil criado com sucesso!');
     history.push('/');
   } catch (err) {
-    console.tron(err);
     toast.error('Falha no cadastro, verifique seus dados');
     yield put(signFailure());
   }
