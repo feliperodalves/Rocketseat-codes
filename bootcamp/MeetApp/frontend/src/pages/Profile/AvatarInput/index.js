@@ -14,14 +14,14 @@ export default function AvatarInput() {
 
   useEffect(() => {
     if (ref.current) {
-      /** :TODO:
-       * registerField({
-       * name: 'avatar_id',
-       * ref: ref.current,
-       * path: 'dataset.file',
-       * }); */
+      registerField({
+        name: 'avatar_id',
+        ref: ref.current,
+        path: 'dataset.file',
+      });
     }
-  }, [ref, registerField]);
+    // eslint-disable-next-line
+  }, [ref]);
 
   async function handleChange(e) {
     const data = new FormData();

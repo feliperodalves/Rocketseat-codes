@@ -43,7 +43,6 @@ class UserController {
       confirmPassword: Yup.string().when('password', (password, field) =>
         password ? field.required().oneOf([Yup.ref('password')]) : field
       ),
-      file_id: Yup.number(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -70,7 +69,11 @@ class UserController {
 
     const { id, name, avatar } = await User.findByPk(req.userId, {
       include: [
-        { model: File, as: 'avatar', attributes: ['id', 'path', 'url'] },
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
       ],
     });
 

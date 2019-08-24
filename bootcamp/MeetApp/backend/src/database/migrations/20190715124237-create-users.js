@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      file_id: {
+      avatar_id: {
         type: Sequelize.INTEGER,
         references: { model: 'files', key: 'id' },
         onUpdate: 'CASCADE',

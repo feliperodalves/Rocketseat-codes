@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { MdAddCircle } from 'react-icons/md';
-import { Container, List, Meetup } from './styles';
+import { MdAddCircle, MdChevronRight } from 'react-icons/md';
+import { Container, List } from './styles';
 
 export default function Dashboard() {
   return (
@@ -14,22 +14,36 @@ export default function Dashboard() {
         </button>
       </div>
       <List>
-        <Meetup>
+        <li>
           <strong>Meetup de React Native</strong>
-          <p>24 de Junho, às 20h</p>
-        </Meetup>
-        <Meetup>
+          <div>
+            <p>24 de Junho, às 20h</p>
+            <button>
+              <MdChevronRight size={25} color="#fff" />
+            </button>
+          </div>
+        </li>
+        <li>
           <strong>NodeJS Meetup</strong>
-          <p>17 de Julho, às 13h</p>
-        </Meetup>
-        <Meetup>
+          <div>
+            <p>17 de Julho, às 13h</p>
+            <MdChevronRight size={25} color="#fff" />
+          </div>
+        </li>
+        <li>
           <strong>Rocketseat Meetup</strong>
-          <p>30 de Agosto, às 20h</p>
-        </Meetup>
-        <Meetup>
+          <div>
+            <p>30 de Agosto, às 20h</p>
+            <MdChevronRight size={25} color="#fff" />
+          </div>
+        </li>
+        <li>
           <strong>React on the house!</strong>
-          <p>17 de Novembro, às 10h</p>
-        </Meetup>
+          <div>
+            <p>17 de Novembro, às 10h</p>
+            <MdChevronRight size={25} color="#fff" />
+          </div>
+        </li>
       </List>
     </Container>
   );

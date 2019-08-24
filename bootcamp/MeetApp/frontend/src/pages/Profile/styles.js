@@ -56,7 +56,7 @@ export const Container = styled.div`
       align-items: center;
 
       svg {
-        margin-right: 5px;
+        margin-right: 10px;
       }
 
       &:hover {
