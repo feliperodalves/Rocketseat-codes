@@ -3,6 +3,8 @@ import {
   isBefore,
   parseISO,
   startOfDay,
+  endOfMonth,
+  addMonths,
   endOfDay,
 } from 'date-fns';
 import * as Yup from 'yup';
@@ -15,13 +17,18 @@ import File from '../models/File';
 class MeetupController {
   async index(req, res) {
     const { page = 1 } = req.query;
-    const date = req.query.date ? parseISO(req.query.date) : new Date();
+    const initialDate = req.query.date
+      ? startOfDay(parseISO(req.query.date))
+      : startOfDay(new Date());
+    const finalDate = req.query.date
+      ? endOfDay(parseISO(req.query.date))
+      : endOfMonth(addMonths(new Date(), 1));
 
     const meetups = await Meetup.findAll({
       where: {
         user_id: req.userId,
         datetime: {
-          [Op.between]: [startOfDay(date), endOfDay(date)],
+          [Op.between]: [initialDate, finalDate],
         },
       },
       attributes: ['id', 'title', 'description', 'datetime'],
