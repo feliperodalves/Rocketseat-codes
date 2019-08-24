@@ -1,49 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { MdAddCircle, MdChevronRight } from 'react-icons/md';
+import api from '~/services/api';
+import history from '~/services/history';
+
 import { Container, List } from './styles';
 
 export default function Dashboard() {
+  const [meetups, setMeetups] = useState([]);
+
+  useEffect(() => {
+    async function loadMeetups() {
+      const response = await api.get('meetups');
+
+      if (!response) {
+        return;
+      }
+      const result = response.data.map(meetup => ({
+        ...meetup,
+        dateFormatted: format(
+          parseISO(meetup.datetime),
+          "d 'de' MMMM', às' HH'h'",
+          {
+            locale: pt,
+          }
+        ),
+      }));
+
+      setMeetups(result);
+    }
+    loadMeetups();
+  }, []);
+
   return (
     <Container>
       <div>
         <h1>Meus meetups</h1>
-        <button type="button">
+        <button type="button" onClick={() => history.push('/meetup/editor')}>
           <MdAddCircle size={20} color="#fff" />
           Novo Meetup
         </button>
       </div>
       <List>
-        <li>
-          <strong>Meetup de React Native</strong>
-          <div>
-            <p>24 de Junho, às 20h</p>
-            <button>
-              <MdChevronRight size={25} color="#fff" />
-            </button>
-          </div>
-        </li>
-        <li>
-          <strong>NodeJS Meetup</strong>
-          <div>
-            <p>17 de Julho, às 13h</p>
-            <MdChevronRight size={25} color="#fff" />
-          </div>
-        </li>
-        <li>
-          <strong>Rocketseat Meetup</strong>
-          <div>
-            <p>30 de Agosto, às 20h</p>
-            <MdChevronRight size={25} color="#fff" />
-          </div>
-        </li>
-        <li>
-          <strong>React on the house!</strong>
-          <div>
-            <p>17 de Novembro, às 10h</p>
-            <MdChevronRight size={25} color="#fff" />
-          </div>
-        </li>
+        {meetups.map(meetup => (
+          <li key={meetup.id}>
+            <strong>{meetup.title}</strong>
+            <div>
+              <p>{meetup.dateFormatted}</p>
+              <Link to={`meetup/${meetup.id}`}>
+                <MdChevronRight size={25} color="#fff" />
+              </Link>
+            </div>
+          </li>
+        ))}
       </List>
     </Container>
   );
