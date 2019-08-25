@@ -17,7 +17,12 @@ export default function Routes() {
       <PrivateRoute path="/register" component={SignUp} />
       <PrivateRoute path="/dashboard" component={Dashboard} isPrivate />
       <PrivateRoute path="/profile" component={Profile} isPrivate />
-      <PrivateRoute path="/meetup/:id" component={MeetupDetails} isPrivate />
+      <PrivateRoute path="/meetup/new/" component={MeetupEditor} isPrivate />
+      <PrivateRoute
+        path="/meetup/details/:id"
+        component={MeetupDetails}
+        isPrivate
+      />
       <PrivateRoute
         path="/meetup/editor/:id"
         component={MeetupEditor}

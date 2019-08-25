@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
+import { MdAddAPhoto } from 'react-icons/md';
 import api from '~/services/api';
 
 import { Container } from './styles';
@@ -15,7 +16,7 @@ export default function BannerInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'banner_id',
+        name: 'file_id',
         ref: ref.current,
         path: 'dataset.file',
       });
@@ -38,12 +39,15 @@ export default function BannerInput() {
   return (
     <Container>
       <label htmlFor="banner">
-        <img
-          src={
-            preview || 'https://api.adorable.io/avatars/200/abott@adorable.png'
-          }
-          alt=""
-        />
+        {!preview ? (
+          <div className="icon-add">
+            <MdAddAPhoto size={50} />
+            <p>Selecionar Imagem</p>
+          </div>
+        ) : (
+          <img src={preview} alt="Banner" />
+        )}
+
         <input
           type="file"
           id="banner"

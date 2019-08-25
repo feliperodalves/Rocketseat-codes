@@ -39,7 +39,7 @@ export default function Dashboard() {
     <Container>
       <div>
         <h1>Meus meetups</h1>
-        <button type="button" onClick={() => history.push('/meetup/editor')}>
+        <button type="button" onClick={() => history.push('/meetup/new')}>
           <MdAddCircle size={20} color="#fff" />
           Novo Meetup
         </button>

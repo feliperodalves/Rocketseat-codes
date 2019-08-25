@@ -27,7 +27,12 @@ export default function SignIn() {
     <>
       <img src={logo} alt="GoBarber" />
       <Form onSubmit={handleSubmit} schema={schema}>
-        <Input name="email" type="text" placeholder="Seu email" />
+        <Input
+          name="email"
+          type="text"
+          placeholder="Seu email"
+          autoComplete="off"
+        />
         <Input name="password" type="password" placeholder="Sua senha" />
         <button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
         <Link to="/register">Não tenho uma conta</Link>
