@@ -1,47 +1,34 @@
-# Front-end
+# MeetApp - Rocketseat - Bootcamp - Challenge - Specifications (portuguese)
 
-Nesse desafio você irá construir o front-end com ReactJS do Meetapp que utilizará a API que você desenvolveu anteriormente.
+Criação de frontend com ReactJS do Meetapp que utilizará a API desenvolvida. [(aqui)](../backend/)
 
-Crie uma aplicação do zero utilizando create-react-app e configure as ferramentas de padrões de código, Reactotron, Redux e Redux Saga.
+Criada aplicação utilizando create-react-app e configurada com Reactotron, Redux e Redux Saga.
 
-Essa aplicação será utilizada por organizadores de meetups e não contará com funcionalidades de inscrição.
+Essa aplicação será utilizada apenas por organizadores de meetups, não será necessário as funcionalidades de inscrições em Meetups
 
-Essa aplicação faz parte do desafio final do bootcamp utilizado para finalização e certificação.
-
-O layout do projeto está anexado nesse repositório.
+O layout do projeto está anexado nesse repositório. [(aqui)](./StyleGuide)
 
 ## Telas
 
-### Autenticação
+### SignIn e SignUp
 
 O usuário deve poder se autenticar utilizando e-mail e senha.
-
-### Cadastro
-
 O usuário deve poder se cadastrar com nome, e-mail e senha.
+![](./showoff/Sigin-Signup.gif)
 
-### Dashboard
-
-O usuário deve poder listar os meetups que organiza e clicar para ver detalhes de um meetup.
-
-Nessa tela o usuário pode navegar para a página de criação de meetup.
-
-### Detalhes
-
-O usuário deve poder visualizar detalhes de um meetup previamente cadastrado.
-
-Nessa tela o usuário pode editar os dados de um meetup ou até cancelar um meetup.
-
-### Novo/editar
-
-O usuário deve poder cadastrar ou editar informações de meetups que organiza.
-
-Exiba a preview de imagem de banner do meetup quando o usuário selecionar uma imagem.
-
-Utilize validação nos campos.
-
-### Perfil
+### Profile
 
 O usuário deve poder editar suas informações de cadastro.
+![](./showoff/Update-Profile.gif)
 
-Utilize validação nos campos.
+### Dashboard e Meetup Create
+
+O usuário deve poder listar os meetups que organiza e clicar para ver detalhes de um meetup.
+Nessa tela o usuário pode navegar para a página de criação de meetup.
+![](./showoff/Create-Meetup.gif)
+
+### Detalhes e Meetup Edit / Delete + SignOut
+
+O usuário deve poder visualizar detalhes de um meetup previamente cadastrado.
+Nessa tela o usuário pode editar os dados de um meetup ou até cancelar um meetup.
+![](./showoff/Edit-Delete-Meetup-Signout.gif)
