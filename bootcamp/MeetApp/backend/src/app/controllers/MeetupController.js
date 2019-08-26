@@ -44,18 +44,47 @@ class MeetupController {
             {
               model: File,
               as: 'avatar',
-              attributes: ['id', 'url'],
+              attributes: ['id', 'url', 'path'],
             },
           ],
         },
         {
           model: File,
           as: 'banner',
-          attributes: ['id', 'url'],
+          attributes: ['id', 'url', 'path'],
         },
       ],
     });
     return res.json(meetups);
+  }
+
+  async detail(req, res) {
+    const meetup = await Meetup.findByPk(req.params.id, {
+      where: {
+        user_id: req.userId,
+      },
+      attributes: ['id', 'title', 'description', 'datetime', 'location'],
+      include: [
+        {
+          model: User,
+          as: 'organizer',
+          attributes: ['id', 'name'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['id', 'url', 'path'],
+            },
+          ],
+        },
+        {
+          model: File,
+          as: 'banner',
+          attributes: ['id', 'url', 'path'],
+        },
+      ],
+    });
+    return res.json(meetup);
   }
 
   async store(req, res) {
