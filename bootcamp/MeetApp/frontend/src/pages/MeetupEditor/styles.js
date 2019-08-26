@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
 
+export const Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 940px;
+  margin: 50px auto;
+
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+`;
+
 export const Container = styled.div`
   max-width: 940px;
   margin: 50px auto;

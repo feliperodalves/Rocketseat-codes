@@ -50,7 +50,7 @@ export default function Dashboard() {
             <strong>{meetup.title}</strong>
             <div>
               <p>{meetup.dateFormatted}</p>
-              <Link to={`meetup/${meetup.id}`}>
+              <Link to={`meetup/details/${meetup.id}`}>
                 <MdChevronRight size={25} color="#fff" />
               </Link>
             </div>

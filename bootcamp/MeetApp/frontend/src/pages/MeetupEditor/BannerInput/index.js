@@ -40,7 +40,7 @@ export default function BannerInput() {
     <Container>
       <label htmlFor="banner">
         {!preview ? (
-          <div className="icon-add">
+          <div>
             <MdAddAPhoto size={50} />
             <p>Selecionar Imagem</p>
           </div>
