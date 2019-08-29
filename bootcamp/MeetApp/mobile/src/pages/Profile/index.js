@@ -1,12 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Image } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 import { signOut } from '~/store/modules/auth/actions';
 
+import logo from '~/assets/logo.png';
+
 import Background from '~/components/Background';
 import {
+  Header,
   Container,
   Title,
   Form,
@@ -55,6 +59,9 @@ export default function Profile() {
 
   return (
     <Background>
+      <Header>
+        <Image source={logo} style={{ width: 23, height: 24 }} />
+      </Header>
       <Container>
         <Form>
           <Title />
