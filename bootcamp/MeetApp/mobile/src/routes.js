@@ -1,11 +1,8 @@
-import React from 'react';
 import {
   createAppContainer,
   createSwitchNavigator,
   createBottomTabNavigator,
-  createStackNavigator,
 } from 'react-navigation';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
-import { subDays, addDays } from 'date-fns';
+import React, { useState, useEffect } from 'react';
+import { Image, TouchableOpacity, Text } from 'react-native';
+import { subDays, addDays, format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import api from '~/services/api';
 
 import logo from '~/assets/logo.png';
 import { Container, Header, DateSwitch } from './styles';
@@ -11,6 +13,31 @@ import DateInput from '~/components/DateInput';
 
 export default function Dashboard() {
   const [date, setDate] = useState(new Date());
+  const [meetups, setMeetups] = useState([]);
+
+  useEffect(() => {
+    async function loadMeetups() {
+      const response = await api.get('/meetups');
+
+      if (!response) {
+        return;
+      }
+
+      setMeetups(
+        response.data.map(meetup => ({
+          ...meetup,
+          dateFormatted: format(
+            parseISO(meetup.datetime),
+            "d 'de' MMMM', às' HH'h'",
+            {
+              locale: pt,
+            }
+          ),
+        }))
+      );
+    }
+    loadMeetups();
+  }, []);
 
   return (
     <Background>
@@ -33,6 +60,8 @@ export default function Dashboard() {
             <Icon name="chevron-right" size={30} color="#fff" />
           </TouchableOpacity>
         </DateSwitch>
+
+        {meetups && meetups.map(meetup => <Text>{meetup.title}</Text>)}
       </Container>
     </Background>
   );
