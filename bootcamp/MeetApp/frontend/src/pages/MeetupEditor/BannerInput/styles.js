@@ -31,6 +31,7 @@ export const Container = styled.div`
     img {
       height: 300px;
       width: 100%;
+      object-fit: cover;
       border-radius: 4px;
     }
 
