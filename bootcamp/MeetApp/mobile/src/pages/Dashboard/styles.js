@@ -8,7 +8,9 @@ export const Header = styled.View`
   justify-content: center;
 `;
 
-export const Container = styled.View``;
+export const Container = styled.SafeAreaView`
+  flex: 1;
+`;
 
 export const DateSwitch = styled.View`
   flex-direction: row;
@@ -18,4 +20,13 @@ export const DateSwitch = styled.View`
   margin: 30px 0 20px;
 `;
 
-export const DateInput = styled.View``;
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { padding: 30 },
+})``;
+
+export const ListLoading = styled.Text`
+  font-size: 30px;
+  color: #fff;
+  align-self: center;
+`;
