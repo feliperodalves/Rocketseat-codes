@@ -35,6 +35,11 @@ class SubscriptionController {
                 },
               ],
             },
+            {
+              model: File,
+              as: 'banner',
+              attributes: ['id', 'url', 'path'],
+            },
           ],
         },
         {
@@ -89,6 +94,7 @@ class SubscriptionController {
       include: [
         {
           model: Subscription,
+          as: 'subscription',
           where: {
             user_id: req.userId,
           },
@@ -121,6 +127,24 @@ class SubscriptionController {
     });
 
     return res.json(subscription);
+  }
+
+  async delete(req, res) {
+    const subscription = await Subscription.findOne({
+      where: { meetup_id: req.params.id },
+    });
+    if (!subscription) {
+      return res.status(400).json({ error: 'Subscription does not exists' });
+    }
+    if (subscription.user_id !== req.userId) {
+      return res
+        .status(401)
+        .json({ error: 'You can not delete others subscription' });
+    }
+
+    await subscription.destroy();
+
+    return res.send();
   }
 }
 

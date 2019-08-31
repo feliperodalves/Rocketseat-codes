@@ -82,6 +82,7 @@ export const Details = styled.div`
   img {
     width: 100%;
     height: 300px;
+    object-fit: cover;
     margin-bottom: 25px;
   }
 
