@@ -78,4 +78,4 @@ For mobile:
   react-native run-android or react-native run-ios
 ```
 
-To test the backend REST API, you can use Insomnia and use this [(configuration)](./Insomnia Configuration.json)
+To test the backend REST API, you can use Insomnia and use this [(configuration)](./Insomnia_Configuration.json)
