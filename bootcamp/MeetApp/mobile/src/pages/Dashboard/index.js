@@ -17,45 +17,49 @@ function Dashboard({ isFocused }) {
   const [loadingList, setLoadingList] = useState(true);
   const [loading, setLoading] = useState(true);
   const [date, setDate] = useState(new Date());
+  const [page, setPage] = useState(1);
   const [meetups, setMeetups] = useState([]);
   const [refresh, setRefresh] = useState(true);
 
-  useEffect(() => {
-    async function loadMeetups() {
-      const response = await api.get('/meetups', {
-        params: {
-          date: format(date, 'yyyy-MM-dd'),
-        },
-      });
+  const loadMeetups = async () => {
+    const response = await api.get('/meetups', {
+      params: {
+        date: format(date, 'yyyy-MM-dd'),
+        page,
+      },
+    });
 
-      if (!response) {
-        setLoading(false);
-        setLoadingList(false);
-        return;
-      }
-
-      setMeetups(
-        response.data
-          .map(meetup => ({
-            ...meetup,
-            dateFormatted: format(
-              parseISO(meetup.datetime),
-              "d 'de' MMMM', às' HH'h'",
-              {
-                locale: pt,
-              }
-            ),
-            subscribed: meetup.subscription.length > 0,
-          }))
-          .filter(meetup => !meetup.past)
-      );
+    if (!response) {
       setLoading(false);
       setLoadingList(false);
+      return;
     }
 
+    setMeetups(
+      response.data
+        .map(meetup => ({
+          ...meetup,
+          dateFormatted: format(
+            parseISO(meetup.datetime),
+            "d 'de' MMMM', às' HH'h'",
+            {
+              locale: pt,
+            }
+          ),
+          subscribed: meetup.subscription.length > 0,
+        }))
+        .filter(meetup => !meetup.past)
+    );
+    setPage(page + 1);
+    setLoading(false);
+    setLoadingList(false);
+  };
+
+  useEffect(() => {
     if (isFocused) {
       loadMeetups();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, isFocused, refresh]);
 
   async function handleSubmit(id, subscribed) {
@@ -109,6 +113,8 @@ function Dashboard({ isFocused }) {
                 }}
               />
             )}
+            onEndReached={loadMeetups()}
+            onEndReachedThreshold={0.1}
           />
         )}
       </Container>
