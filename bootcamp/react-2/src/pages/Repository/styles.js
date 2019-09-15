@@ -50,22 +50,31 @@ export const ListOptions = styled.div`
   color: #555;
   font-size: 14px;
   font-weight: bold;
+
+  span {
+    padding: 10px;
+  }
 `;
 
 export const Button = styled.button`
   padding: 3px 10px;
   border: 1px solid rgba(20, 20, 20, 0.1);
   border-radius: 3px;
-  background: #eeeeee;
+  background: ${props => (props.active ? '#7159c1' : '#eee')};
   cursor: pointer;
-  color: #555;
+  color: ${props => (props.active ? '#fff' : '#555')};
   font-size: 14px;
   margin: 0 2px;
+  font-weight: ${props => (props.active ? 'bold' : 'normal')};
 
-  &[active] {
-    background: #7159c1;
-    color: #fff;
-    font-weight: bold;
+  &[disabled] {
+    background: #bbb;
+    border: none;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background: #bbb;
   }
 `;
 

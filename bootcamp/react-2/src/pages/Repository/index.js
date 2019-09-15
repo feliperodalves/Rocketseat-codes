@@ -13,6 +13,17 @@ export default class Repository extends Component {
         repository: PropTypes.string,
       }),
     }).isRequired,
+    prevProps: PropTypes.shape({
+      state: PropTypes.string,
+      page: PropTypes.number,
+    }),
+  };
+
+  static defaultProps = {
+    prevProps: {
+      state: 'all',
+      page: 1,
+    },
   };
 
   state = {
@@ -45,6 +56,23 @@ export default class Repository extends Component {
     });
   }
 
+  fetchData = async () => {
+    const { match } = this.props;
+    const { state, page } = this.state;
+    const repoName = decodeURIComponent(match.params.repository);
+    console.log(page);
+    const issues = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        page,
+      },
+    });
+
+    this.setState({
+      issues: issues.data,
+    });
+  };
+
   render() {
     const { repository, issues, loading, state, page } = this.state;
 
@@ -62,16 +90,55 @@ export default class Repository extends Component {
         </Owner>
         <ListOptions>
           <div>
-            <Button>All</Button>
-            <Button>Open</Button>
-            <Button>Closed</Button>
+            <Button
+              active={state === 'all' ? 1 : 0}
+              onClick={async () => {
+                await this.setState({ state: 'all' });
+                this.fetchData();
+              }}
+            >
+              All
+            </Button>
+            <Button
+              active={state === 'open' ? 1 : 0}
+              onClick={async () => {
+                await this.setState({ state: 'open' });
+                this.fetchData();
+              }}
+            >
+              Open
+            </Button>
+            <Button
+              active={state === 'closed' ? 1 : 0}
+              onClick={async () => {
+                await this.setState({ state: 'closed' });
+                this.fetchData();
+              }}
+            >
+              Closed
+            </Button>
           </div>
           <div>
-            <Button onClick={() => this.setState({ page: page - 1 })}>
+            <Button
+              disabled={page === 1 ? 1 : 0}
+              onClick={async () => {
+                if (page > 1) {
+                  await this.setState({ page: page - 1 });
+                  this.fetchData();
+                }
+              }}
+            >
               Prev
             </Button>
             <span>{page}</span>
-            <Button onClick={() => this.setState({ page: page + 1 })}>
+            <Button
+              onClick={async () => {
+                if (issues.length <= 30) {
+                  await this.setState({ page: page + 1 });
+                  this.fetchData();
+                }
+              }}
+            >
               Next
             </Button>
           </div>
