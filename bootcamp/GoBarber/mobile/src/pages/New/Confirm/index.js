@@ -1,19 +1,19 @@
-import React, {useMemo} from 'react';
-import {TouchableOpacity} from 'react-native';
+import React, { useMemo } from 'react';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {formatRelative, parseISO} from 'date-fns';
+import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import {Container, Avatar, Name, Time, SubmitButton} from './styles';
+import { Container, Avatar, Name, Time, SubmitButton } from './styles';
 import Background from '~/components/Background';
 import api from '~/services/api';
 
-export default function Confirm({navigation}) {
+export default function Confirm({ navigation }) {
   const provider = navigation.getParam('provider');
   const time = navigation.getParam('time');
 
   const dateFormatted = useMemo(
-    () => formatRelative(parseISO(time), new Date(), {locale: pt}),
+    () => formatRelative(parseISO(time), new Date(), { locale: pt }),
     [time]
   );
 
@@ -44,7 +44,7 @@ export default function Confirm({navigation}) {
   );
 }
 
-Confirm.navigationOptions = ({navigation}) => ({
+Confirm.navigationOptions = ({ navigation }) => ({
   title: 'Confirmar Agendamento',
   headerLeft: () => (
     <TouchableOpacity onPress={() => navigation.goBack()}>
