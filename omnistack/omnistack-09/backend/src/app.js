@@ -1,6 +1,7 @@
 import express from 'express';
 import mongo from 'mongoose';
 import cors from 'cors';
+import path from 'path';
 import http from 'http';
 import socketIO from 'socket.io';
 import routes from './routes';
@@ -44,6 +45,10 @@ class App {
 
     this.app.use(cors());
     this.app.use(express.json());
+    this.app.use(
+      '/files',
+      express.static(path.resolve(__dirname, '..', 'uploads'))
+    );
   }
 
   routes() {
