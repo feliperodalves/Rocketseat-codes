@@ -17,7 +17,26 @@ class BookingController {
       .populate('user')
       .execPopulate();
 
+    const ownerSocket = req.connectedUsers[booking.spot.user];
+    if (ownerSocket){
+      req.io.to(ownerSocket).emit('booking-request', booking);
+      console.log(booking);
+    }
+
     return res.json(booking);
+  }
+
+  async index(req,res){
+    const { user_id } = req.headers;
+
+    const booking = await Booking.find().populate('user').populate({
+      path: 'spot', 
+      match: {
+        user: user_id 
+      }
+    });
+
+    return res.json(booking.filter(book => book.spot && !book.approved))
   }
 }
 

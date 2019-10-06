@@ -33,19 +33,48 @@ export const Item = styled.li`
 `;
 
 export const Container = styled.div`
-  button {
-    border: 0;
-    border-radius: 2px;
-    width: 100%;
-    height: 42px;
-    padding: 0 20px;
-    font-size: 16px;
-    font-weight: bold;
-    background: #f05a5b;
-    color: #fff;
+  a {
+    button {
+      border: 0;
+      border-radius: 2px;
+      width: 100%;
+      height: 42px;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #f05a5b;
+      color: #fff;
 
-    :hover {
-      background: #e14f50;
+      :hover {
+        background: #e14f50;
+      }
     }
+  }
+`;
+
+export const Notifications = styled.ul`
+  list-style: none;
+  margin-bottom: 15px;
+
+  li {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #eee;
+  }
+
+  button {
+    margin-right: 10px;
+    border: 0;
+    font-weight: bold;
+    margin-top: 10px;
+    background: none;
+  }
+  .accept {
+    color: #84c870;
+  }
+
+  .reject {
+    color: #e55e5e;
   }
 `;

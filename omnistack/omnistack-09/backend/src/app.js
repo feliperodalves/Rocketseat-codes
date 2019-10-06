@@ -15,9 +15,9 @@ class App {
     this.connectedUsers = {};
 
     this.io.on('connection', socket => {
-      const { user } = socket.handshake.query;
+      const { user_id } = socket.handshake.query;
 
-      this.connectedUsers[user] = socket.id;
+      this.connectedUsers[user_id] = socket.id;
     });
 
     this.mongo();
@@ -27,7 +27,7 @@ class App {
 
   mongo() {
     this.mongoConnection = mongo.connect(
-      'mongodb://localhost:27017/omnistack',
+      'mongodb://192.168.15.10:27017/omnistack',
       {
         useNewUrlParser: true,
         useFindAndModify: true,
