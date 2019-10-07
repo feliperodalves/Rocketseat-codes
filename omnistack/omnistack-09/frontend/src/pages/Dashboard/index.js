@@ -78,7 +78,7 @@ export default function Dashboard() {
               <button
                 className="reject"
                 type="button"
-                onClick={() => handleAccept(request._id)}
+                onClick={() => handleReject(request._id)}
               >
                 REJEITAR
               </button>

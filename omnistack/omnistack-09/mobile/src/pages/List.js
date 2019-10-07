@@ -6,7 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
+  Alert,
 } from 'react-native';
+import socketIO from 'socket.io-client';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import logo from '../assets/logo.png';
@@ -47,6 +49,22 @@ const styles = StyleSheet.create({
 
 export default function List({ navigation }) {
   const [techs, setTechs] = useState([]);
+
+  useEffect(() => {
+    AsyncStorage.getItem('user').then(user_id => {
+      const socket = socketIO('http://192.168.15.10:3333', {
+        query: { user_id },
+      });
+
+      socket.on('booking-response', booking => {
+        Alert.alert(
+          `Sua reserva em ${booking.spot.company} em ${booking.date} foi ${
+            booking.approved ? 'APROVADA' : 'REPROVADA'
+          }`
+        );
+      });
+    });
+  }, []);
 
   useEffect(() => {
     AsyncStorage.getItem('techs').then(storagedTechs => {

@@ -9,9 +9,13 @@ class RejectionController {
 
     await booking.save();
 
+    const bookingUserSocket = req.connectedUsers[booking.user];
+    if (bookingUserSocket) {
+      req.io.to(bookingUserSocket).emit('booking-response', booking);
+    }
+
     return res.json(booking);
   }
 }
 
 export default new RejectionController();
- 
