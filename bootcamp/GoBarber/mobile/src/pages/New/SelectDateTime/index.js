@@ -1,13 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {TouchableOpacity} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
-import {Container, HourList, Hour, Title} from './styles';
+import { Container, HourList, Hour, Title } from './styles';
 import Background from '~/components/Background';
 import DateInput from '~/components/DateInput';
 import api from '~/services/api';
 
-export default function SelectDateTime({navigation}) {
+export default function SelectDateTime({ navigation }) {
   const [date, setDate] = useState(new Date());
   const provider = navigation.getParam('provider');
   const [hours, setHours] = useState([]);
@@ -20,7 +22,15 @@ export default function SelectDateTime({navigation}) {
         },
       });
 
-      setHours(response.data);
+      const data = response.data.map(a => {
+        a.timeFormatted = format(
+          parseISO(a.value, 'HH:mm', { locale: pt }),
+          'HH:mm'
+        );
+        return a;
+      });
+
+      setHours(data);
     }
 
     loadAvailable();
@@ -41,11 +51,11 @@ export default function SelectDateTime({navigation}) {
         <HourList
           data={hours}
           keyExtractor={item => item.time}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <Hour
               enabled={item.available}
               onPress={() => handleSelectHour(item.value)}>
-              <Title>{item.time}</Title>
+              <Title>{item.timeFormatted}</Title>
             </Hour>
           )}
         />
@@ -54,7 +64,7 @@ export default function SelectDateTime({navigation}) {
   );
 }
 
-SelectDateTime.navigationOptions = ({navigation}) => ({
+SelectDateTime.navigationOptions = ({ navigation }) => ({
   title: 'Selecione o horário',
   headerLeft: () => (
     <TouchableOpacity onPress={() => navigation.goBack()}>
