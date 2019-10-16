@@ -3,12 +3,14 @@
 const Task = use('App/Models/Task')
 
 class TaskController {
-  async index ({ params }) {
+  async index ({ params, request }) {
+    const { page } = request.get()
+
     const tasks = await Task.query()
       .where('project_id', params.project_id)
       .with('user')
       .with('file')
-      .fetch()
+      .paginate(page)
 
     return tasks
   }
