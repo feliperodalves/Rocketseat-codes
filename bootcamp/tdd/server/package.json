@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
-    "pretest": "set NODE_ENV=test && sequelize db:migrate",
-    "test": "set NODE_ENV=test && jest",
-    "posttest": "set NODE_ENV=test && sequelize db:migrate:undo:all"
+    "pretest-linux": "NODE_ENV=test sequelize db:migrate",
+    "test-linux": "NODE_ENV=test jest",
+    "posttest-linux": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "pretest-win": "set NODE_ENV=test && sequelize db:migrate",
+    "test-win": "set NODE_ENV=test && jest",
+    "posttest-win": "set NODE_ENV=test && sequelize db:migrate:undo:all"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
