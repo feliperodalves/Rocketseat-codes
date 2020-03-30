@@ -10,7 +10,7 @@ module.exports = {
     const devExists = await Dev.findOne({ github });
 
     if (devExists) {
-      return res.json({ devExists });
+      return res.json(devExists);
     }
 
     const response = await axios.get(`https://api.github.com/users/${github}`);
@@ -32,12 +32,12 @@ module.exports = {
       location,
     });
 
-    return res.json({ dev });
+    return res.json(dev);
   },
 
   async index(req, res) {
     const devs = await Dev.find();
 
-    return res.json({ devs });
+    return res.json(devs);
   },
 };
