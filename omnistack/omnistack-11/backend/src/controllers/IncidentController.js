@@ -3,7 +3,7 @@ const conn = require('../database');
 module.exports = {
   async store(req, res) {
     const { title, description, value } = req.body;
-    const { ong_id } = req.headers.authorization;
+    const ong_id = req.headers.authorization;
 
     const incident = await conn('incidents').insert({
       title,
@@ -40,7 +40,7 @@ module.exports = {
 
   async delete(req, res) {
     const { id } = req.params;
-    const { ong_id } = req.headers.authorization;
+    const ong_id = req.headers.authorization;
 
     const incident = await conn('incidents')
       .where('id', id)
