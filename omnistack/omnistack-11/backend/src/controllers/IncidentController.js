@@ -21,7 +21,7 @@ module.exports = {
     const [count] = await conn('incidents').count();
 
     const incidents = await conn('incidents')
-      .join('ongs', 'ongs.id', '=', 'incidents.ongs_id')
+      .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
       .limit(5)
       .offset(5 * (page - 1))
       .select([
