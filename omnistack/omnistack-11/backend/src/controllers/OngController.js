@@ -6,7 +6,7 @@ module.exports = {
     const { name, email, whatsapp, city, uf } = req.body;
     const id = crypto.randomBytes(4).toString('HEX');
 
-    const ong = await conn('ongs').insert({
+    await conn('ongs').insert({
       id,
       name,
       email,
@@ -15,7 +15,7 @@ module.exports = {
       uf,
     });
 
-    return res.json(ong);
+    return res.json({ id });
   },
 
   async index(req, res) {
