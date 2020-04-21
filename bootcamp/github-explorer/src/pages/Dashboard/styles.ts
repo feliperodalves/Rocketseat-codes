@@ -83,7 +83,7 @@ export const Repositories = styled.div`
     }
 
     & + a {
-      margin-top: 0 16px;
+      margin-top: 16px;
     }
 
     img {

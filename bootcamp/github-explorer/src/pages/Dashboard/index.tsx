@@ -62,7 +62,10 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={logoImg} alt="Github explorer" />
+      <Link to="/">
+        <img src={logoImg} alt="Github explorer" />
+      </Link>
+
       <Title>Explore repositórios no Github</Title>
 
       <Form onSubmit={handleAddRepository} hasError={!!inputError}>
@@ -80,7 +83,7 @@ export const Dashboard: React.FC = () => {
         {repositories.map(repository => (
           <Link
             key={repository.full_name}
-            to={`/repository/${repository.full_name}}`}
+            to={`/repository/${repository.full_name}`}
           >
             <img
               src={repository.owner.avatar_url}
