@@ -15,6 +15,9 @@ const providers = [
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/lucid-slugify/providers/SlugifyProvider',
+  '@adonisjs/framework/providers/ViewProvider',
+  '@adonisjs/mail/providers/MailProvider',
+  '@rocketseat/adonis-bull/providers/Bull',
 ];
 
 /*
@@ -26,7 +29,10 @@ const providers = [
 | Providers for migrations, tests etc.
 |
 */
-const aceProviders = ['@adonisjs/lucid/providers/MigrationsProvider'];
+const aceProviders = [
+  '@adonisjs/lucid/providers/MigrationsProvider',
+  '@rocketseat/adonis-bull/providers/Command',
+];
 
 /*
 |--------------------------------------------------------------------------
