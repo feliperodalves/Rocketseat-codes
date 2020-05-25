@@ -1,10 +1,11 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema');
 
-class UserTeamSchema extends Schema {
+class TeamSchema extends Schema {
   up() {
-    this.create('user_teams', (table) => {
+    this.create('teams', (table) => {
       table.increments();
+      table.string('name').notNullable();
       table
         .integer('user_id')
         .unsigned()
@@ -13,21 +14,14 @@ class UserTeamSchema extends Schema {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-      table
-        .integer('team_id')
-        .unsigned()
-        .notNullable()
-        .references('id')
-        .inTable('teams')
-        .onUpdate('CASCADE')
-        .onDelete('CASCADE');
+      table.string('slug').notNullable().unique();
       table.timestamps();
     });
   }
 
   down() {
-    this.drop('user_teams');
+    this.drop('teams');
   }
 }
 
-module.exports = UserTeamSchema;
+module.exports = TeamSchema;
