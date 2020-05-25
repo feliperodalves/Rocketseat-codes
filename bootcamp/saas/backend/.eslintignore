@@ -1,0 +1,7 @@
+/app/Downloads/*
+/resources/*
+/node_modules/*
+/ace
+/*md
+/*.json
+/*.lock

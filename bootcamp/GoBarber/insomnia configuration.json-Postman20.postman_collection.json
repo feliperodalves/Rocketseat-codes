@@ -1,0 +1,550 @@
+{
+  "info": {
+    "name": "GoBarber",
+    "_postman_id": "6ea9c3d0-4b94-470e-af73-e1128aa4e2a7",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/"
+  },
+  "item": [
+    {
+      "name": "Available",
+      "description": "",
+      "item": [
+        {
+          "id": "48a21711-0bbf-47c2-91ac-630e1b3fa711",
+          "name": "List",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "providers/3/available"
+              ],
+              "port": "3333",
+              "query": [
+                {
+                  "key": "date",
+                  "value": "1563049620201",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "cc0b7005-2ac2-429e-bc71-9e555c57d336"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "description": "",
+      "item": [
+        {
+          "id": "28851012-bd09-4440-bba9-0d35cab4c9cc",
+          "name": "List",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "notifications"
+              ],
+              "port": "3333"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "58969fc7-778a-41f3-af37-98198e8875f7"
+            }
+          ]
+        },
+        {
+          "id": "1b0d5922-0595-4b2f-b89a-883bb1454fff",
+          "name": "Update",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "notifications/"
+              ],
+              "port": "3333"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "0f1f7432-ebb1-4597-a232-4306695317a0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Schedule",
+      "description": "",
+      "item": [
+        {
+          "id": "1bc31835-ad94-4245-8056-167e74248ba3",
+          "name": "List",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "schedule"
+              ],
+              "port": "3333",
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2019-06-22T00%3A00%3A00-03%3A00",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "b47d8d04-8196-4c74-87dc-55b4dbfc21bb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Files",
+      "description": "",
+      "item": [
+        {
+          "id": "6bbaf17b-fbc9-44bd-8cc4-da0be7b8d42e",
+          "name": "Create",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "files"
+              ],
+              "port": "3333"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data",
+                "description": "",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "disabled": false,
+                  "type": "file",
+                  "description": ""
+                }
+              ],
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "code": 200,
+              "name": "Response_200",
+              "id": "0289cc99-2e12-4146-9acd-5f949a30d0ed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "description": "",
+      "item": [
+        {
+          "id": "c2f91a1a-fdbe-4b9d-9688-eeac07f70d76",
+          "name": "Create",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "users"
+              ],
+              "port": "3333"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Felipe Rodrigues Alves\",\r\n  \"email\": \"felipe.rod.alves6@gmail.com\",\r\n  \"password\": \"1805felipe\"\r\n}",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "18e3e644-ad92-4a06-a110-5a9ba312a346"
+            }
+          ]
+        },
+        {
+          "id": "90c4ff40-8eff-4f8c-959a-2b8101529ada",
+          "name": "Update",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "users"
+              ],
+              "port": "3333"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Felipe Alves\",\r\n  \"email\": \"felipe.rod.alves@gmail.com\",\r\n  \"avatar_id\": 1\r\n}",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "6a5387ba-f2b6-4831-9caf-5fb55ad37228"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Providers",
+      "description": "",
+      "item": [
+        {
+          "id": "efa19c5c-a90f-4fa2-a6c5-7e7808de7443",
+          "name": "List",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "providers"
+              ],
+              "port": "3333"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "8d8115ad-c34f-4779-a71f-6d9ac977fd2c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "description": "",
+      "item": [
+        {
+          "id": "909aaa21-2254-4e05-b614-7ce7d6aaa307",
+          "name": "Create",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "appointments"
+              ],
+              "port": "3333"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"provider_id\": 3,\r\n  \"date\": \"2019-07-20T18:00:00-03:00\"\r\n}",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "5ec94711-ffb2-41e6-9689-8f70bccfa7e2"
+            }
+          ]
+        },
+        {
+          "id": "5c810e98-b7d9-402b-b55d-c7a07aed0f4e",
+          "name": "Delete",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "appointments/id"
+              ],
+              "port": "3333"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"provider_id\": 3,\r\n  \"date\": \"2019-07-01T18:00:00-03:00\"\r\n}",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "8ebe0722-3c41-4aa0-8716-87eae60a36ef"
+            }
+          ]
+        },
+        {
+          "id": "24ce25d7-418d-47d5-a0c9-78f6d01fa9f3",
+          "name": "List",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "appointments"
+              ],
+              "port": "3333"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "527c0f75-2511-4e28-899e-95149753c5c5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sessions",
+      "description": "",
+      "item": [
+        {
+          "id": "254ac1df-7510-43e5-8184-09075db41e25",
+          "name": "Create",
+          "request": {
+            "url": {
+              "protocol": "http",
+              "host": "localhost",
+              "path": [
+                "sessions"
+              ],
+              "port": "3333"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"felipe.rod.alves@gmail.com\",\r\n  \"password\": \"1805felipe\"\r\n}",
+              "disabled": false
+            },
+            "description": ""
+          },
+          "response": [
+            {
+              "header": [],
+              "code": 200,
+              "name": "Response_200",
+              "id": "60fa11ee-8aaf-476d-9624-a79e80635345"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [],
+  "auth": {
+    "type": "bearer",
+    "bearer": {
+      "token": "<<token>>",
+      "scope": ""
+    }
+  }
+}
