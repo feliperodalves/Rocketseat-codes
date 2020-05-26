@@ -28,6 +28,7 @@
     "@adonisjs/mail": "^3.0.10",
     "@adonisjs/validator": "^5.0.6",
     "@rocketseat/adonis-bull": "^0.2.2",
+    "adonis-acl": "^1.1.1",
     "pg": "^8.2.1"
   },
   "devDependencies": {
