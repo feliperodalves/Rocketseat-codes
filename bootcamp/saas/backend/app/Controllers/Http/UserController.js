@@ -1,0 +1,47 @@
+/** @typedef {import('@adonisjs/framework/src/Request')} Request */
+/** @typedef {import('@adonisjs/framework/src/Response')} Response */
+/** @typedef {import('@adonisjs/framework/src/View')} View */
+/** @typedef {import('@adonisjs/framework/src/View')} View */
+
+/**
+ * Resourceful controller for interacting with users
+ */
+
+const User = use('App/Models/User');
+const Invite = use('App/Models/Invite');
+
+class UserController {
+  /**
+   * Create/save a new user.
+   * POST users
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   */
+  async store({ request, response, auth }) {
+    const data = request.only(['name', 'email', 'password']);
+
+    const teamsQuery = Invite.query().where('email', data.email);
+
+    const teams = await teamsQuery.pluck('team_id');
+
+    if (teams.length === 0) {
+      return response
+        .status(401)
+        .send({ message: 'You are not invited to any team' });
+    }
+
+    const user = await User.create(data);
+
+    await user.teams().attach(teams);
+
+    await teamsQuery.delete();
+
+    const token = await auth.attempt(data.email, data.password);
+
+    return token;
+  }
+}
+
+module.exports = UserController;
