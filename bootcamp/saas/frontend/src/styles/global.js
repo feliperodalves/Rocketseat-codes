@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-// import 'react-perfect-scrollbar/dist/css/styles.css';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=flow');
@@ -29,6 +28,7 @@ export default createGlobalStyle`
   body, input, button {
     font-family: 'Source Sans Pro', sans-serif;
     text-rendering: optimizeLegibility !important;
+    color: #fff;
   }
 
   a {
