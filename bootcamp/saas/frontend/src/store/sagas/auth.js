@@ -9,7 +9,9 @@ export function* signIn({ email, password }) {
   try {
     const response = yield call(api.post, 'sessions', { email, password });
 
-    localStorage.setItem('@SAAS', response.data.token);
+    localStorage.setItem('@SAAS:token', response.data.token);
+
+    api.defaults.headers.Authentication = `Bearer ${response.data.token}`;
 
     yield put(AuthActions.signInSuccess(response.data.token));
     yield put(push('/'));

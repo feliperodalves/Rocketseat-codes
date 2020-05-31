@@ -1,8 +1,10 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import history from '~/services/history';
+
+import PrivateRoute from '~/routes/private';
 
 import SignIn from '~/pages/Auth/SignIn';
 import SignUp from '~/pages/Auth/SignUp';
@@ -12,9 +14,9 @@ const Routes = () => {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path='/signin' component={SignIn} />
-        <Route path='/signup' component={SignUp} />
-        <Route path='/' exact component={Main} />
+        <PrivateRoute path='/signin' component={SignIn} />
+        <PrivateRoute path='/signup' component={SignUp} />
+        <PrivateRoute path='/' exact component={Main} isPrivate />
       </Switch>
     </ConnectedRouter>
   );

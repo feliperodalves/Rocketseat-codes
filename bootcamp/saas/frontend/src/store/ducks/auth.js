@@ -14,16 +14,14 @@ export default Creators;
 /* Initial State */
 
 export const INITIAL_STATE = Immutable({
-  signedIn: false,
-  token: null,
+  signedIn: !!localStorage.getItem('@SAAS:token'),
+  token: localStorage.getItem('@SAAS:token') || null,
 });
 
 /* Reducers */
 
-export const success = (state, { token }) => {
-  console.log(token);
-  return state.merge({ signedIn: true, token });
-};
+export const success = (state, { token }) =>
+  state.merge({ signedIn: true, token });
 
 /* Reducers to types */
 
