@@ -18,12 +18,12 @@ class PermissionController {
    */
   async show({ request, auth }) {
     const teamJoin = await UserTeam.query()
-      .where('team_id', request.team_id)
+      .where('team_id', request.team.id)
       .where('user_id', auth.user.id)
       .first();
 
     return {
-      roler: await teamJoin.getRoles(),
+      roles: await teamJoin.getRoles(),
       permissions: await teamJoin.getPermissions(),
     };
   }

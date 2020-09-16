@@ -18,7 +18,7 @@ class MemberController {
    */
   async index({ request }) {
     const members = await UserTeam.query()
-      .where('team_id', request.team_id)
+      .where('team_id', request.team.id)
       .with('user')
       .with('roles')
       .fetch();
@@ -34,7 +34,7 @@ class MemberController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update({ params, request, auth }) {
+  async update({ params, request }) {
     const roles = request.input('roles');
 
     const teamJoin = await UserTeam.find(params.id);

@@ -30,6 +30,7 @@ class ProjectController {
    * @param {Response} ctx.response
    */
   async store({ request }) {
+    console.log('STORE METHOD');
     const data = request.only(['title']);
     const project = request.team.projects().create(data);
 

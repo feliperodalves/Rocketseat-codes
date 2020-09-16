@@ -2,24 +2,24 @@ import { call, put } from 'redux-saga/effects';
 import { actions as toastrActions } from 'react-redux-toastr';
 import api from '~/services/api';
 
-import TeamsActions from '~/store/ducks/teams';
+import ProjectsActions from '~/store/ducks/projects';
 
-export function* getTeams() {
+export function* getProjects() {
   try {
-    const response = yield call(api.get, 'teams');
+    const response = yield call(api.get, 'projects');
 
-    yield put(TeamsActions.getTeamsSuccess(response.data));
+    yield put(ProjectsActions.getProjectsSuccess(response.data));
   } catch (error) {
     console.log(error);
   }
 }
 
-export function* createTeam({ name }) {
+export function* createProject({ name }) {
   try {
-    const response = yield call(api.post, 'teams', { name });
+    const response = yield call(api.post, 'projects', { name });
 
-    yield put(TeamsActions.createTeamSuccess(response.data));
-    yield put(TeamsActions.closeTeamModal());
+    yield put(ProjectsActions.createProjectSuccess(response.data));
+    yield put(ProjectsActions.closeProjectModal());
   } catch (error) {
     yield put(
       toastrActions.add({

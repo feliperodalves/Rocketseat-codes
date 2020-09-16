@@ -18,6 +18,7 @@ const providers = [
   '@adonisjs/framework/providers/ViewProvider',
   '@adonisjs/mail/providers/MailProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/cors/providers/CorsProvider',
   '@rocketseat/adonis-bull/providers/Bull',
   'adonis-acl/providers/AclProvider',
 ];

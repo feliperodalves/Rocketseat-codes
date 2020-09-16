@@ -11,8 +11,6 @@ export function* signIn({ email, password }) {
 
     localStorage.setItem('@SAAS:token', response.data.token);
 
-    api.defaults.headers.Authentication = `Bearer ${response.data.token}`;
-
     yield put(AuthActions.signInSuccess(response.data.token));
     yield put(push('/'));
   } catch (error) {
@@ -23,6 +21,17 @@ export function* signIn({ email, password }) {
         message: 'Verifique seus dados',
       }),
     );
+    console.log(error);
+  }
+}
+
+export function* signOut() {
+  try {
+    localStorage.removeItem('@SAAS:token');
+    localStorage.removeItem('@SAAS:team');
+
+    yield put(push('/signin'));
+  } catch (error) {
     console.log(error);
   }
 }

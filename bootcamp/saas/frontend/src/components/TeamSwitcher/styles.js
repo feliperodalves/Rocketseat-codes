@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.aside`
   background: #202225;
@@ -47,5 +48,23 @@ export const NewTeam = styled.button`
     border-radius: 30%;
     border: 1px dashed rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
+  }
+`;
+
+export const Logout = styled.button`
+  transition: all 0.2s;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 1px dashed #e04848;
+  color: #e04848;
+  margin: 0 0 8px;
+  background: transparent;
+  font-weight: bold;
+
+  &:hover {
+    border-radius: 30%;
+    border: 1px dashed ${darken(0.2, '#e04848')};
+    color: ${darken(0.2, '#e04848')};
   }
 `;

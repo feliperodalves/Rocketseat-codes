@@ -11,6 +11,8 @@ class Team {
   async handle({ request, response, auth }, next) {
     const slug = request.header('TEAM');
 
+    console.log('TEAM', slug);
+
     let team = null;
 
     if (slug) {
